@@ -17,7 +17,7 @@ for time in d_log:
     for data in d_log[time]:
         # check if data has 2 or more tuple
         if isinstance(data,tuple):
-            # add the name in list of entry or exit
+            # add the name to list of entry or exit
             if data[1] == 'e':
                 entry_list.append(data[0])
                 amout_inside +=1 # increase amount of people inside by 1 if having entry
@@ -26,7 +26,7 @@ for time in d_log:
                 if amout_inside > 0 : amout_inside -= 1  # decrease amount of people inside by 1 if having exit
         # if data has 1 tuple:
         else:
-            # add the name in list of entry or exit
+            # add the name to list of entry or exit
             if d_log[time][1] == 'e':
                 entry_list.append(d_log[time][0])
                 amout_inside += 1  # increase amount of people inside by 1 if having entry
@@ -58,3 +58,11 @@ for time in d_log:
     if entry_str != '' and exit_str != '':
         comma_ = ','
     print(f'Between {time} and {time + 1}' + entry_str + comma_ +  exit_str + '.' + f'({amout_inside} inside)')
+
+# Output:
+# Between 6 and 7 has nobody passed door. (0 inside)
+# Between 7 and 8 only Eric entered.(1 inside)
+# Between 8 and 9 John and Michael entered, only Eric exited Secure area.(2 inside)
+# Between 9 and 10 has nobody passed door. (2 inside)
+# Between 10 and 11 Terry, Eric and John entered, only John exited Secure area.(4 inside)
+# Between 11 and 12 John and Michael exited Secure area.(2 inside)
